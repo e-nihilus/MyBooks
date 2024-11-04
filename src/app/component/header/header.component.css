@@ -1,0 +1,23 @@
+div{
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+h1{color: white;}
+
+p{
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: large;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.title, .pages{
+    background: transparent
+
+}

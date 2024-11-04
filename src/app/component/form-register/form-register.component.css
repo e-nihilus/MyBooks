@@ -1,0 +1,58 @@
+.formulario {
+    background-color: #ffffff91;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    min-width: 400px;
+  }
+
+  .formulario h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+  }
+
+  .formu {
+    margin-bottom: 15px;
+  }
+
+  .formu label {
+    display: block;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 3px;
+  }
+
+  .formu input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+  }
+
+  .formu input:focus {
+    border-color: #007BFF;
+    outline: none;
+  }
+
+  
+  .regis {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+
+  .regis:hover {
+    background-color: #0056b3;
+  }
+
