@@ -9,6 +9,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { FormRegisterComponent } from './component/form-register/form-register.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { BooksComponent } from './pages/books/books.component';
+import { PipeBookCodePipe } from './pipes/pipe-book-code.pipe';
+import { PipeGradosPipe } from './pipes/pipe-grados.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
     HomeComponent,
     FormRegisterComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    BooksComponent,
+    PipeBookCodePipe,
+    PipeGradosPipe
   ],
   imports: [
     BrowserModule,

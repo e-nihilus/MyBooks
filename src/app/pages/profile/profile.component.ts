@@ -69,6 +69,11 @@ export class ProfileComponent {
     } else {
         this.isHidden2 = false;
     }
+
+    setTimeout(() => {
+      this.isHidden1 = true;
+      this.isHidden2 = true;
+  }, 3000);
 }
 
 }

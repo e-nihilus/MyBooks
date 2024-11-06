@@ -1,0 +1,134 @@
+.fondo {
+    background-image: url("../../../assets/img/libra.jpg");
+    background-size: cover;
+    background-position: center;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+.card {
+    width: 80%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 90%;
+}
+
+p{
+    margin-top: 10px;
+}
+
+h2{
+    color: var(--color-fondo1);
+}
+  
+.books {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 20px;
+    min-width: 25%;
+    margin: 20px;
+    text-align: left;
+}
+
+.imag{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+img{
+    height: 300px;
+}
+
+hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 3px solid var(--color-fondo2);
+    border-radius: 10px;
+}
+
+.btn1 {
+    margin-top: 10px;
+    background-color: var(--color-fondo1); 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: large;
+    transition: background-color 0.5s;
+}
+
+.btn1:hover {
+    background-color: var(--color-fondo2); 
+}
+
+.btn2 {
+    margin-top: 10px;
+    background-color: var(--color-fondo2); 
+    color: black;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: large;
+    transition: background-color 0.5s;
+}
+
+.btn2:hover {
+    background-color: var(--color-fondo1); 
+}
+
+.formulario{
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 20px;
+    width: 20%;
+    margin: 20px;
+}
+
+.formu {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formu input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: medium;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgba(63, 63, 57, 0.459);
+    backdrop-filter: blur(20px);
+}
+
+.separador{
+    width: 90%;
+}
+
+.vacio{
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    font-size: xx-large;
+    padding: 20px;
+
+}
+  
