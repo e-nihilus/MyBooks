@@ -30,4 +30,8 @@ export class BooksComponent {
     (document.getElementById("photo") as HTMLInputElement).value = '';
   }
 
+  removeBook(book: any) {
+    this.books = this.books.filter(b => b !== book); 
+  } 
+
 }

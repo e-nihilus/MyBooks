@@ -1,0 +1,19 @@
+<div class="books">
+
+    <button class="close" (click)="removeCard()">X</button>
+
+    <div class="imag">
+
+      <img src="{{ book.photo }}" alt="Imagen de Perfil" class="profile" />
+
+    </div>
+
+    <hr />
+    <h2>{{ book.title }}</h2>
+    <p>Tapa {{ book.type }}</p>
+    <p><strong>Autor:</strong> {{ book.author }}</p>
+    <p><strong>Precio:</strong> ${{ book.price }}</p>
+    <p>{{ book.id_book | pipeBookCode }}</p>
+    <button type="button" [ngClass]="{ 'btn1': even, 'btn2': !even }"><b>Comprar</b></button>
+
+  </div>

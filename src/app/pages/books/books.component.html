@@ -3,24 +3,18 @@
 
     <div class="card">
 
-      <div class="books" *ngFor="let book of books; let even=even">
+      <div *ngFor="let book of books; let even=even">
+        
+        <app-card [book]="book" [even]="even" (delete)="removeBook(book)"></app-card>
 
-        <div class="imag">
-            <img src="{{book.photo}}" alt="Imagen de Perfil" class="profile">
-        </div> 
-        <hr>
-        <h2>{{ book.title }}</h2>
-        <p>Tapa {{ book.type }}</p>
-        <p><strong>Autor:</strong> {{ book.author }}</p>
-        <p><strong>Precio:</strong> ${{ book.price }}</p>
-        <p>{{book.id_book | pipeBookCode}}</p>
-        <button type="button" [ngClass]="{'btn1': even, 'btn2': !even}"><b>Comprar</b></button>
       </div>
-
+ 
       <div>
+
         <div *ngIf="books.length === 0" class="vacio">
             Lo sentimos, no tenemos libros diponibles
         </div>
+        
       </div>
 
     </div>

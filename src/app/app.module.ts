@@ -11,6 +11,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
 import { PipeBookCodePipe } from './pipes/pipe-book-code.pipe';
+import { CardComponent } from './component/card/card.component';
 
 
 
@@ -24,7 +25,8 @@ import { PipeBookCodePipe } from './pipes/pipe-book-code.pipe';
     RegisterComponent,
     ProfileComponent,
     BooksComponent,
-    PipeBookCodePipe
+    PipeBookCodePipe,
+    CardComponent
   ],
   imports: [
     BrowserModule,
