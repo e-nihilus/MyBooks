@@ -12,7 +12,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
 import { PipeBookCodePipe } from './pipes/pipe-book-code.pipe';
 import { CardComponent } from './component/card/card.component';
-
+import { AddBookComponent } from './pages/add-book/add-book.component';
+import { UpdateBookComponent } from './pages/update-book/update-book.component';
+import { FormsModule } from '@angular/forms'; 
 
 
 @NgModule({
@@ -26,11 +28,14 @@ import { CardComponent } from './component/card/card.component';
     ProfileComponent,
     BooksComponent,
     PipeBookCodePipe,
-    CardComponent
+    CardComponent,
+    AddBookComponent,
+    UpdateBookComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
