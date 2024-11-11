@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-books',
@@ -12,7 +13,9 @@ export class BooksComponent implements OnInit {
   public filteredBooks: Book[] = []; 
   public searchId: number; 
 
-  constructor(private booksService: BooksService) {}
+  constructor(private booksService: BooksService,
+              private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.loadBooks(); 
@@ -28,7 +31,9 @@ export class BooksComponent implements OnInit {
     if (this.searchId) {
       const foundBooks = this.books.filter(book => book.id_book === id);
       if (foundBooks.length === 0) {
-      window.alert("No se encuentra el libro");
+        this.toastr.error('Este Id no existe', 'Error',{
+          positionClass: 'toast-top-center',
+        });
       }
       this.filteredBooks = foundBooks;
     } else {

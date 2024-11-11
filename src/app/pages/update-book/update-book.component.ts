@@ -22,18 +22,16 @@ export class UpdateBookComponent {
     const ext = this.booksService.edit(bookMod);
             
     if (ext) {
-      this.toastr.success('El libro ha sido actualizado exitosamente!', 'Éxito', {
-          timeOut: 3000, 
-          positionClass: 'toast-bottom-right' 
-      });
+      this.toastr.success('Libro modificado', 'Exito',{
+        positionClass: 'toast-top-center'
+      })
 
       this.router.navigate(['/books']);
   } 
   else {
-      this.toastr.error('Error al actualizar el libro. No se encontró.', 'Error', {
-          timeOut: 3000, 
-          positionClass: 'toast-bottom-right' 
-      });
+    this.toastr.error('No se ha encontrado el Id del libro', 'Error',{
+      positionClass: 'toast-top-center'
+    });
   }
   }
             

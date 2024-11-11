@@ -1,0 +1,26 @@
+.formu{
+    
+    background-color: #ffffff91;
+    padding: 30px;
+    border-radius: 8px;
+    color: black;
+    text-align: left;
+    font-size: large;
+    width: 100%;
+    min-width: 400px;
+}
+
+h2{
+    text-align: center;
+}
+
+label{
+    margin-top: 10px;
+}
+
+p{
+    margin: 0px;
+}
+.btn:disabled{
+    cursor: not-allowed; 
+  }

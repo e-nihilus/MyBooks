@@ -10,10 +10,18 @@ import { User } from 'src/app/models/user';
 export class FormLoginComponent {
 
   public user: User;
-
   
-  onSubmit(form: NgForm) {
+  constructor() 
+  {
+    this.user = new User("","","","","","")
+  }
 
+  onSubmit(form:NgForm) {
+    console.log(form.value)
+    console.log(this.user);
+  }
+
+  ngOnInit(): void {
   }
 
 }

@@ -1,30 +1,45 @@
 <div class="fondo">
-
     <div class="formulario">
-
         <h2>Agregar un nuevo libro</h2>
-        <form class="formu">
-            <label for="title">Título:</label>
-            <input type="text" id="title" #title required>
+        <form class="formu" #bookForm="ngForm" (ngSubmit)="addBook(bookForm)">
+            <label>Título:</label>
+            <input type="text" class="form-control" name="title" [(ngModel)]="book.title" #titleId="ngModel"
+                [ngClass]="{ 'is-invalid': (titleId.dirty || titleId.touched) && titleId.invalid }" required>
+            <div *ngIf="(titleId.dirty || titleId.touched) && titleId.invalid" class="invalid-feedback">
+                <div *ngIf="titleId.errors.required">El título es obligatorio</div>
+            </div>
 
-            <label for="type">Tipo de tapa:</label>
-            <input type="text" id="type" #type required>
+            <label>Tipo de tapa:</label>
+            <input type="text" class="form-control" name="type" [(ngModel)]="book.type" #typeId="ngModel"
+                [ngClass]="{ 'is-invalid': (typeId.dirty || typeId.touched) && typeId.invalid }" required>
+            <div *ngIf="(typeId.dirty || typeId.touched) && typeId.invalid" class="invalid-feedback">
+                <div *ngIf="typeId.errors.required">El tipo de tapa es obligatorio</div>
+            </div>
 
-            <label for="author">Autor:</label>
-            <input type="text" id="author" #author required>
+            <label>Autor:</label>
+            <input type="text" class="form-control" name="author" [(ngModel)]="book.author" #authorId="ngModel"
+                [ngClass]="{ 'is-invalid': (authorId.dirty || authorId.touched) && authorId.invalid }" required>
+            <div *ngIf="(authorId.dirty || authorId.touched) && authorId.invalid" class="invalid-feedback">
+                <div *ngIf="authorId.errors.required">El autor es obligatorio</div>
+            </div>
 
-            <label for="price">Precio:</label>
-            <input type="number" id="price" #price required>
+            <label>Precio:</label>
+            <input type="number" class="form-control" name="price" [(ngModel)]="book.price" #priceId="ngModel"
+                [ngClass]="{ 'is-invalid': (priceId.dirty || priceId.touched) && priceId.invalid }" required>
+            <div *ngIf="(priceId.dirty || priceId.touched) && priceId.invalid" class="invalid-feedback">
+                <div *ngIf="priceId.errors.required">El precio es obligatorio</div>
+            </div>
 
-            <label for="photo">Imagen:</label>
-            <input type="url" id="photo" #photo required>
+            <label>Imagen:</label>
+            <input type="url" class="form-control" name="photo" [(ngModel)]="book.photo" #photoId="ngModel"
+                [ngClass]="{ 'is-invalid': (photoId.dirty || photoId.touched) && photoId.invalid }" required>
+            <div *ngIf="(photoId.dirty || photoId.touched) && photoId.invalid" class="invalid-feedback">
+                <div *ngIf="photoId.errors.required">La URL de la imagen es obligatoria</div>
+            </div>
 
             <div class="boton">
-                <button type="button" class="btn1" (click)="addBook(title.value, type.value, author.value, price.value, photo.value)">Agregar Libro</button>
+                <button type="submit" class="btn1" [disabled]="!bookForm.valid">Agregar Libro</button>
             </div>
-            
         </form>
-
     </div>
-
-</div> 
+</div>

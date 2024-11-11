@@ -11,15 +11,33 @@ div{
 h1{color: white;}
 
 p{
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top:0px ;
+    margin-bottom: 0px;
     font-size: large;
 }
 a{
     text-decoration: none;
     color: black;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .title, .pages{
     background: transparent
 
 }
+
+.active {
+    color: white; 
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 5px; 
+    padding: 5px; 
+    transition: background 0.3s ease, color 0.3s ease; 
+    cursor: pointer; 
+}
+
+
+

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -20,6 +20,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import { FormLoginComponent } from './component/form-login/form-login.component';
 
+const routes: Routes = [
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'books', component: BooksComponent },
+  { path: 'addBook', component: AddBookComponent },
+  { path: 'updateBook', component: UpdateBookComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
+];
 
 @NgModule({
   declarations: [
@@ -41,6 +51,7 @@ import { FormLoginComponent } from './component/form-login/form-login.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, 

@@ -13,7 +13,7 @@
     text-align: center;
 }
 .btn1 {
-    margin-top: 10px;
+    margin-top: 30px;
     background-color: var(--color-fondo1); 
     color: white;
     border: none;
@@ -27,6 +27,12 @@
 
 .btn1:hover {
     background-color: var(--color-fondo2); 
+}
+
+.btn1:disabled {
+    background-color: #ccc; 
+    color: #666; 
+    cursor: not-allowed; 
 }
 
 .formulario{
@@ -46,8 +52,6 @@
 .formu input {
     width: 100%;
     padding: 5px;
-    margin-top: 10px;
-    margin-bottom: 20px;
     font-size: medium;
     color: white;
     border: 1px solid #ccc;
@@ -55,4 +59,12 @@
     text-align: center;
     background-color: rgba(63, 63, 57, 0.459);
     backdrop-filter: blur(20px);
+}
+
+label{
+    margin-top: 20px;
+}
+
+input{
+    margin-top: -3px;
 }

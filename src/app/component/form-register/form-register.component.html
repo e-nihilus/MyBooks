@@ -2,37 +2,65 @@
 
 <div class="formulario">
     <h2>Registro</h2>
-    <form>
+    <form [formGroup]="regisForm">
       <div class="formu">
-        <label for="first-name">Nombre</label>
-        <input type="text" id="first-name" name="first-name" required>
+        <label>Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre"
+        [ngClass]="{'is-invalid': (regisForm.get('nombre').dirty || regisForm.get('nombre').touched) && !regisForm.get('nombre').valid}">
+          <div *ngIf="!regisForm.get('nombre').valid" class="invalid-feedback">
+            El nombre es necesario
+          </div> 
       </div>
 
       <div class="formu">
-        <label for="last-name">Apellido</label>
-        <input type="text" id="last-name" name="last-name" required>
+        <label>Apellido</label>
+        <input type="text" class="form-control" formControlName="apellido"
+        [ngClass]="{'is-invalid': (regisForm.get('apellido').dirty || regisForm.get('apellido').touched) && !regisForm.get('apellido').valid}">
+          <div *ngIf="!regisForm.get('apellido').valid" class="invalid-feedback">
+            El apellido es necesario
+          </div> 
       </div>
 
       <div class="formu">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <label>Email</label>
+        <input type="email" class="form-control" formControlName="email"
+        [ngClass]="{'is-invalid': (regisForm.get('email').dirty || regisForm.get('email').touched) && !regisForm.get('email').valid}">
+          <div *ngIf="!regisForm.get('email').valid" class="invalid-feedback">
+            <div *ngIf="regisForm.get('email').errors.required">La dirección de email es obligatoria</div>
+            <div *ngIf="regisForm.get('email').errors.email">Dirección email incorrecta</div>
+          </div>
       </div>
 
       <div class="formu">
-        <label for="url">URL de Perfil</label>
-        <input type="url" id="url" name="url">
+        <label>URL de Perfil</label>
+        <input type="url" class="form-control" formControlName="url"
+        [ngClass]="{'is-invalid': (regisForm.get('url').dirty || regisForm.get('url').touched) && !regisForm.get('url').valid}">
+          <div *ngIf="!regisForm.get('url').valid" class="invalid-feedback">
+            El url de imagen es necesario
+          </div> 
       </div>
 
       <div class="formu">
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" required>
+        <label>Contraseña</label>
+        <input type="password" class="form-control" formControlName="password"
+        [ngClass]="{'is-invalid': (regisForm.get('password').dirty || regisForm.get('password').touched) && !regisForm.get('password').valid}">
+          <div *ngIf="!regisForm.get('password').valid" class="invalid-feedback">
+            <div *ngIf="regisForm.get('password').errors.required">La clave es obligatoria</div>
+            <div *ngIf="regisForm.get('password').errors.minlength">La clave debe tener al menos 8 caracteres</div>  
+            <div *ngIf="regisForm.get('password').errors.passwdComplex">La clave debe tener al menos 1 numero y un caracter especial</div>    
+          </div>
       </div>
 
       <div class="formu">
-        <label for="confirm-password">Repetir Contraseña</label>
-        <input type="password" id="confirm-password" name="confirm-password" required>
+        <label>Repetir Contraseña</label>
+        <input type="password" class="form-control" formControlName="password2"
+        [ngClass]="{'is-invalid': (regisForm.get('password2').dirty || regisForm.get('password2').touched) && !regisForm.get('password2').valid}">
+        <div *ngIf="!regisForm.get('password2').valid" class="invalid-feedback">
+          <div *ngIf="regisForm.get('password2').errors.required">La clave es obligatoria</div>
+          <div *ngIf="!regisForm.get('password2').errors.required && regisForm.get('password2').errors.matchPassword">Las claves no coinciden</div> 
+        </div>
       </div>
 
-      <button type="submit" class="regis">Registrarse</button>
+      <button class="btn btn-danger btn-block" (click)="register()" [disabled]="regisForm.invalid">Iniciar sesion</button>
     </form>
   </div>

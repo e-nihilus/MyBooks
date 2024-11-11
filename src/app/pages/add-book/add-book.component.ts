@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-book',
@@ -9,25 +11,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent {
+
+  public book: Book = new Book("","","",0,"");
   
   constructor(private booksService: BooksService,
-              private router:Router) {}
+              private router: Router,
+              private toastr: ToastrService) {}
 
-  public addBook(title: string, type: string, author: string, price: number, photo: string) {
+  public addBook(form: NgForm) {
+    const { title, type, author, price, photo } = form.value;
 
     const newBook = new Book(title, type, author, price, photo);
-
     this.booksService.add(newBook);
 
-    (document.getElementById("title") as HTMLInputElement).value = '';
-    (document.getElementById("type") as HTMLInputElement).value = '';
-    (document.getElementById("author") as HTMLInputElement).value = '';
-    (document.getElementById("price") as HTMLInputElement).value = ''; 
-    (document.getElementById("photo") as HTMLInputElement).value = '';
+    form.reset();
 
-    window.alert("Libro se ha añadido!"); 
+    this.toastr.success(title, 'Libro añadido!', {
+      positionClass: 'toast-top-center'
+    }); 
     this.router.navigate(["/books"]);
   }
 }
-
-
