@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-update-book',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 export class UpdateBookComponent { 
 
   constructor(private booksService: BooksService,
-              private router:Router) {}
+              private router:Router,
+              private toastr: ToastrService) {}
 
   public modBook(title: string, type: string, author: string, price: number, photo: string, code: number): void {
 
@@ -20,12 +22,19 @@ export class UpdateBookComponent {
     const ext = this.booksService.edit(bookMod);
             
     if (ext) {
-      alert("Libro actualizado con exito");
-      this.router.navigate(["/books"]);
-    } 
-    else {
-      alert("Error: No se encontró el libro para actualizar.");
-      }
+      this.toastr.success('El libro ha sido actualizado exitosamente!', 'Éxito', {
+          timeOut: 3000, 
+          positionClass: 'toast-bottom-right' 
+      });
+
+      this.router.navigate(['/books']);
+  } 
+  else {
+      this.toastr.error('Error al actualizar el libro. No se encontró.', 'Error', {
+          timeOut: 3000, 
+          positionClass: 'toast-bottom-right' 
+      });
+  }
   }
             
 }

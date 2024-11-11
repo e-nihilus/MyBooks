@@ -33,7 +33,7 @@
     background: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
     padding: 20px;
-    width: 350px;
+    width: 400px;
     margin: 20px;
 }
 
@@ -55,4 +55,9 @@
     text-align: center;
     background-color: rgba(63, 63, 57, 0.459);
     backdrop-filter: blur(20px);
+}
+
+.toast-bottom-right {
+    font-size: 16px;
+    font-weight: bold;
 }

@@ -3,7 +3,7 @@
     <input type="text" class="buscador" [(ngModel)]="searchId" placeholder="Buscar..." (input)="busc()" />
   </div>
 
-  <div class="card">
+  <div class="cards">
     <div *ngFor="let book of filteredBooks; let even = even">
       <app-card [book]="book" [even]="even" (delete)="elim(book)"></app-card>
     </div>

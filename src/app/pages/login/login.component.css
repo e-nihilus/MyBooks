@@ -1,0 +1,14 @@
+.fondo {
+    background-image: url("../../../assets/img/libra.jpg");
+    background-size: cover;
+    background-position: center;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    height: auto;
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
