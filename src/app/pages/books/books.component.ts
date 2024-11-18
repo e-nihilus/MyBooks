@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { ToastrService } from 'ngx-toastr';
+import { Respuesta } from 'src/app/models/respuesta'; 
 
 @Component({
   selector: 'app-books',
@@ -11,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class BooksComponent implements OnInit {
   public books: Book[] = [];  
   public filteredBooks: Book[] = []; 
-  public searchId: number; 
+  public searchId: number | null = null; 
 
   constructor(private booksService: BooksService,
               private toastr: ToastrService
@@ -22,8 +23,21 @@ export class BooksComponent implements OnInit {
   }
 
   loadBooks(): void {
-    this.books = this.booksService.getAll(); 
-    this.filteredBooks = this.books; 
+    this.booksService.getAll().subscribe(
+      (response: any) => {
+        this.books = response.data || [];
+        this.filteredBooks = this.books; 
+
+        if (this.books.length === 0) {
+          this.filteredBooks = []; 
+        }
+      },
+      error => {
+        this.toastr.error("Error en la conexión", "Error", {
+          timeOut: 2000, positionClass: 'toast-top-center'
+        });
+      }
+    );
   }
 
   busc(): void {
@@ -31,18 +45,31 @@ export class BooksComponent implements OnInit {
     if (this.searchId) {
       const foundBooks = this.books.filter(book => book.id_book === id);
       if (foundBooks.length === 0) {
-        this.toastr.error('Este Id no existe', 'Error',{
-          positionClass: 'toast-top-center',
+        this.toastr.error("Este Ref no existe", "Error", {
+          timeOut: 2000,  positionClass: 'toast-top-center',
         });
+        this.filteredBooks = []; 
+      } else {
+        this.filteredBooks = foundBooks; 
       }
-      this.filteredBooks = foundBooks;
     } else {
       this.filteredBooks = this.books; 
     }
   }
 
   elim(book: Book): void {
-    this.booksService.delete(book.id_book); 
-    this.loadBooks(); 
+    this.booksService.delete(book.id_book).subscribe(
+      response => {
+        this.toastr.success("Libro eliminado correctamente", "Éxito", {
+          timeOut: 2000, positionClass: 'toast-top-center',
+        });
+        this.loadBooks(); 
+      },
+      error => {
+        this.toastr.error("Error en la conexión", "Error", {
+          timeOut: 2000, positionClass: 'toast-top-center'
+        });
+      }
+    );
   }
 }

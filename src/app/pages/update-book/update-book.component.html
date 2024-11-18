@@ -19,11 +19,11 @@
             <label for="photo">Imagen:</label>
             <input type="text" id="photo" #photo required>
 
-            <label for="Codigo">Codigo:</label>
-            <input type="number" id="code" #code required>
+            <label for="id_book">Ref:</label>
+            <input type="number" id="id_book" #id_book required>
 
             <div class="boton">
-                <button type="button" class="btn1" (click)="modBook(title.value, type.value, author.value, price.value, photo.value, code.value)">Modificar Libro</button>
+                <button type="button" class="btn1" (click)="modBook(title.value, type.value, author.value, price.value, photo.value, id_book.value)">Modificar Libro</button>
             </div>
             
         </form>

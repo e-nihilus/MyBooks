@@ -19,6 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { LoginComponent } from './pages/login/login.component';
 import { FormLoginComponent } from './component/form-login/form-login.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -46,7 +48,7 @@ const routes: Routes = [
     AddBookComponent,
     UpdateBookComponent,
     LoginComponent,
-    FormLoginComponent
+    FormLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, 
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

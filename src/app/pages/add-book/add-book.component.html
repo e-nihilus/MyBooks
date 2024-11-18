@@ -26,7 +26,7 @@
             <label>Precio:</label>
             <input type="number" class="form-control" name="price" [(ngModel)]="book.price" #priceId="ngModel"
                 [ngClass]="{ 'is-invalid': (priceId.dirty || priceId.touched) && priceId.invalid }" required>
-            <div *ngIf="(priceId.dirty || priceId.touched) && priceId.invalid" class="invalid-feedback">
+            <div *ngIf="(priceId.dirty || priceId.touched) && priceId.invalid" class=" invalid-feedback">
                 <div *ngIf="priceId.errors.required">El precio es obligatorio</div>
             </div>
 
