@@ -10,10 +10,14 @@
             </div>
 
             <label>Tipo de tapa:</label>
-            <input type="text" class="form-control" name="type" [(ngModel)]="book.type" #typeId="ngModel"
+            <select class="form-control" name="type" [(ngModel)]="book.type" #typeId="ngModel"
                 [ngClass]="{ 'is-invalid': (typeId.dirty || typeId.touched) && typeId.invalid }" required>
+            <option value="" disabled selected>Seleccione el tipo de tapa</option>
+            <option value="Tapa Dura">Tapa Dura</option>
+            <option value="Tapa Blanda">Tapa Blanda</option>
+            </select>
             <div *ngIf="(typeId.dirty || typeId.touched) && typeId.invalid" class="invalid-feedback">
-                <div *ngIf="typeId.errors.required">El tipo de tapa es obligatorio</div>
+            <div *ngIf="typeId.errors.required">El tipo de tapa es obligatorio</div>
             </div>
 
             <label>Autor:</label>

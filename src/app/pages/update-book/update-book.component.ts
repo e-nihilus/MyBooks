@@ -11,8 +11,9 @@ import { Respuesta } from 'src/app/models/respuesta';
   styleUrls: ['./update-book.component.css']
 })
 export class UpdateBookComponent { 
+  
 
-  public book: Book = new Book('', '', '', 0, '', 0); 
+  public book: Book = new Book('', '', '', null, '', null); 
 
   constructor(private booksService: BooksService, private router: Router, private toastr: ToastrService) {}
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
+import { UserService } from 'src/app/shared/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { Respuesta } from 'src/app/models/respuesta'; 
+import { Respuesta } from 'src/app/models/respuesta';
 
 @Component({
   selector: 'app-books',
@@ -12,10 +13,12 @@ import { Respuesta } from 'src/app/models/respuesta';
 export class BooksComponent implements OnInit {
   public books: Book[] = [];  
   public filteredBooks: Book[] = []; 
-  public searchId: number | null = null; 
+  public searchId: number = this.booksService.searchId; 
 
-  constructor(private booksService: BooksService,
-              private toastr: ToastrService
+  constructor(
+    private booksService: BooksService, 
+    private userService: UserService, 
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -23,18 +26,31 @@ export class BooksComponent implements OnInit {
   }
 
   loadBooks(): void {
-    this.booksService.getAll().subscribe(
-      (response: any) => {
-        this.books = response.data || [];
-        this.filteredBooks = this.books; 
+    const id_user = this.userService.id_user; 
+    if (!id_user) {
+      this.toastr.error("No se encontró el ID del usuario", "Error", {
+        timeOut: 2000,
+        positionClass: 'toast-top-center'
+      });
+      return;
+    }
 
-        if (this.books.length === 0) {
-          this.filteredBooks = []; 
+    this.booksService.getAll().subscribe(
+      (response: Respuesta) => {
+        if (!response.error) {
+          this.books = response.data || [];
+          this.filteredBooks = this.books;
+        } else {
+          this.toastr.error(response.mensaje, "Error", {
+            timeOut: 2000,
+            positionClass: 'toast-top-center'
+          });
         }
       },
       error => {
-        this.toastr.error("Error en la conexión", "Error", {
-          timeOut: 2000, positionClass: 'toast-top-center'
+        this.toastr.error("Error en la conexión con el servidor", "Error", {
+          timeOut: 2000,
+          positionClass: 'toast-top-center'
         });
       }
     );
@@ -46,7 +62,8 @@ export class BooksComponent implements OnInit {
       const foundBooks = this.books.filter(book => book.id_book === id);
       if (foundBooks.length === 0) {
         this.toastr.error("Este Ref no existe", "Error", {
-          timeOut: 2000,  positionClass: 'toast-top-center',
+          timeOut: 2000,  
+          positionClass: 'toast-top-center',
         });
         this.filteredBooks = []; 
       } else {
@@ -56,18 +73,28 @@ export class BooksComponent implements OnInit {
       this.filteredBooks = this.books; 
     }
   }
+  
 
   elim(book: Book): void {
     this.booksService.delete(book.id_book).subscribe(
-      response => {
-        this.toastr.success("Libro eliminado correctamente", "Éxito", {
-          timeOut: 2000, positionClass: 'toast-top-center',
-        });
-        this.loadBooks(); 
+      (response: Respuesta) => {
+        if (!response.error) {
+          this.toastr.success("Libro eliminado", "Éxito", {
+            timeOut: 2000,
+            positionClass: 'toast-top-center'
+          });
+          this.loadBooks(); 
+        } else {
+          this.toastr.error("Fallo al eliminar", "Error", {
+            timeOut: 2000,
+            positionClass: 'toast-top-center'
+          });
+        }
       },
       error => {
-        this.toastr.error("Error en la conexión", "Error", {
-          timeOut: 2000, positionClass: 'toast-top-center'
+        this.toastr.error("Error en la conexión con el servidor", "Error", {
+          timeOut: 2000,
+          positionClass: 'toast-top-center'
         });
       }
     );

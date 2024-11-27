@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 import { Book } from 'src/app/models/book';
 import { Respuesta } from 'src/app/models/respuesta'; 
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'app-add-book',
@@ -12,9 +13,9 @@ import { Respuesta } from 'src/app/models/respuesta';
   styleUrls: ['./add-book.component.css']
 })
 export class AddBookComponent {
-  public book: Book = new Book('', '', '', 0, ''); 
-
-  constructor(private booksService: BooksService, private router:Router, private toastr: ToastrService) {}
+  id_user = this.userService.id_user;
+  public book: Book = new Book('', '', '', 0, '', 0, this.id_user); 
+  constructor(private booksService: BooksService, private router:Router, private toastr: ToastrService, private userService: UserService) {}
 
   public addBook(form: NgForm) {
 

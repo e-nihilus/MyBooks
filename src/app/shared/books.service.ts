@@ -1,36 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Book } from 'src/app/models/book';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Book } from 'src/app/models/book';
+import { UserService } from './user.service'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
-  public book:Book;
 
   private url = 'http://localhost:3000/books';
 
+  public searchId:number;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private userService: UserService) {}
 
   public getAll(){
-    return this.http.get(this.url);
+    const id_user = this.userService.id_user; 
+    return this.http.get(`${this.url}?id_user=${id_user}`);
   }
 
-  public getOne(id_book: number){
-    return this.http.get(`${this.url}?id_book=${id_book}`);
-  }
+  public getOne() {
+  const id_user = this.userService.id_user;
+  const searchId = this.searchId;
+  return this.http.get(`${this.url}?id_user=${id_user}&id_book=${searchId}`);
+}
 
-  public add(book: Book){
+  public add(book: Book) {
     return this.http.post(this.url, book);
   }
 
-  public edit(book: Book){
+  public edit(book: Book) {
     return this.http.put(this.url, book);
   }
 
-  public delete(id_book: number){
+  public delete(id_book: number) {
     const httpOptions = { headers: null, body: { id_book } };
     return this.http.delete(this.url, httpOptions);
   }
